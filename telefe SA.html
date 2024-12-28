@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Once TV</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: black;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+        iframe {
+            width: 761px;
+            height: 434px;
+            border: 3px solid red;
+            margin-bottom: 20px;
+        }
+        .info {
+            max-width: 640px;
+            text-align: center;
+        }
+        .btn-rojo {
+            display: inline-block;
+            background-color: red; /* Color de fondo rojo */
+            color: black; /* Color de texto negro */
+            padding: 10px 20px; /* Espaciado interno del botón */
+            border-radius: 5px; /* Bordes redondeados */
+            text-decoration: none; /* Sin subrayado en el enlace */
+            font-size: 16px; /* Tamaño de la fuente */
+            font-weight: bold; /* Negrita */
+            text-align: center; /* Alinear texto al centro */
+            transition: background-color 0.3s ease; /* Efecto de transición */
+        }
+
+        .btn-rojo:hover {
+            background-color: darkred; /* Cambia el color de fondo a un rojo más oscuro al pasar el ratón */
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="btn-rojo">Ir al inicio</a>
+    <br>
+    <!-- Reproductor de YouTube -->
+    <iframe src="https://www.youtube.com/embed/fxb7yLeqQ-o" title="EMISIÓN EN DIRECTO EL ONCE TV SALTA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+    <!-- Información y descripción -->
+    <div class="info">
+        <h1>El Once TV</h1>
+        <p><strong>Canal:</strong> El Once TV</p>
+        <p><strong>Descripción:</strong> Canal Argentino de televisión abierta, conocido por su programación variada que incluye telenovelas, noticias, entretenimiento y deportes.</p>
+        <p><strong>País:</strong> Argentina</p>
+        <p><strong>Sitio Web Oficial:</strong> <a href="https://www.youtube.com/channel/UCy-r-BQ5BQRU6rzGS73-WBQ" target="_blank" style="color: white;">Youtube.com/eloncetv</a></p>
+    </div>
+</body>
+</html>

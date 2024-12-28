@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Las Estrellas</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: black;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+        video {
+            width: 640px; /* Ancho mediano */
+            height: 360px; /* Proporción 16:9 */
+            border: 3px solid red;
+            margin-bottom: 20px;
+        }
+        .info {
+            max-width: 640px;
+            text-align: center;
+        }
+        .btn-rojo {
+    display: inline-block;
+    background-color: red; /* Color de fondo rojo */
+    color: black; /* Color de texto negro */
+    padding: 10px 20px; /* Espaciado interno del botón */
+    border-radius: 5px; /* Bordes redondeados */
+    text-decoration: none; /* Sin subrayado en el enlace */
+    font-size: 16px; /* Tamaño de la fuente */
+    font-weight: bold; /* Negrita */
+    text-align: center; /* Alinear texto al centro */
+    transition: background-color 0.3s ease; /* Efecto de transición */
+}
+
+.btn-rojo:hover {
+    background-color: darkred; /* Cambia el color de fondo a un rojo más oscuro al pasar el ratón */
+}
+
+    </style>
+</head>
+<body>
+    <a href="index.html" class="btn-rojo">Ir al inicio</a>
+    <br>
+    <video id="videoPlayer" controls></video>
+    <div class="info">
+        <h1>Las Estrellas</h1>
+        <p><strong>Canal:</strong> Las Estrellas</p>
+        <p><strong>Descripción:</strong> Canal 	 México de televisión abierta, conocido por su programación variada que incluye telenovelas, noticias, entretenimiento y deportes.</p>
+        <p><strong>País:</strong> México</p>
+        <p><strong>Sitio Web Oficial:</strong> <a href="https://www.lasestrellas.tv/" target="_blank" style="color: white;">lasestrellas.tv</a></p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script>
+        if (Hls.isSupported()) {
+            var video = document.getElementById('videoPlayer');
+            var hls = new Hls();
+            // Cargar el archivo m3u8 desde el enlace proporcionado
+            hls.loadSource('https://channel01-onlymex.akamaized.net/hls/live/2022749/event01/index.m3u8');
+            hls.attachMedia(video);
+            hls.on(Hls.Events.MANIFEST_PARSED,function() {
+                video.play();
+            });
+            // Manejo de errores
+            hls.on(Hls.Events.ERROR, function (event, data) {
+                console.error('Error en HLS:', data);
+                if(data.fatal) {
+                    switch(data.type) {
+                        case Hls.ErrorTypes.NETWORK_ERROR:
+                            // try to recover network error
+                            console.log("Fatal network error encountered, try to recover");
+                            hls.startLoad();
+                            break;
+                        case Hls.ErrorTypes.MEDIA_ERROR:
+                            console.log("Fatal media error encountered, try to recover");
+                            hls.recoverMediaError();
+                            break;
+                        default:
+                            // cannot recover
+                            hls.destroy();
+                            break;
+                    }
+                }
+            });
+        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+            video.src = 'https://live-01-02-eltrece.vodgc.net/eltrecetv/index.m3u8';
+            video.addEventListener('loadedmetadata',function() {
+                video.play();
+            });
+            video.addEventListener('error', function(e) {
+                console.error('Error en el video:', e);
+            });
+        } else {
+            console.error('Tu navegador no soporta HLS ni tiene soporte nativo para M3U8.');
+            document.body.innerHTML = '<p style="color:white;">Tu navegador no soporta este tipo de streaming.</p>';
+        }
+    </script>
+</body>
+</html>

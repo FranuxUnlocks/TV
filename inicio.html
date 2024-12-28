@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <style>
+        /* Estilos generales */
+        body {
+            background-color: #0f0f0f;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        h1 {
+            margin-top: 40px;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+        }
+        /* Estilos para el área del usuario */
+        .user-area {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #ffb74d;
+            font-size: 1.2rem;
+        }
+        /* Estilos para los canales */
+        .channel-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 0 20px;
+            width: 100%;
+            max-width: 1200px;
+        }
+        .channel-item {
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            width: 300px;
+            padding: 15px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        .channel-item img {
+            width: 100px;
+            height: 70px;
+            border-radius: 5px;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+        .channel-item .channel-details {
+            flex-grow: 1;
+        }
+        .channel-item:hover {
+            transform: scale(1.05);
+        }
+        .channel-item h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: #ffb74d;
+        }
+        .channel-item p {
+            font-size: 0.9rem;
+            color: #bdbdbd;
+            margin: 10px 0;
+        }
+        .channel-item .btn {
+            background-color: #ffb74d;
+            color: black;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+        .channel-item .btn:hover {
+            background-color: #ff9800;
+        }
+        /* Responsividad */
+        @media (max-width: 768px) {
+            .channel-item {
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .channel-item img {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="user-area" id="userArea"></div>
+    <h1>Selecciona un Canal</h1>
+    <div class="channel-list">
+        <div class="channel-item">
+            <img src="13.png" alt="Canal El Trece">
+            <div class="channel-details">
+                <h3>Canal El Trece</h3>
+                <p>Canal de televisión Argentino conocido por su programación variada, que incluye telenovelas, noticias, entretenimiento y deportes.</p>
+                <a href="el trece.html" target="_blank" class="btn">Ver Canal</a>
+            </div>
+        </div>
+        <div class="channel-item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrxHQP_JJ5ADAMhK61hcLbJCzVVkYO4LLFzQ&s" alt="Canal Las Estrellas">
+            <div class="channel-details">
+                <h3>Canal Las Estrellas</h3>
+                <p>Canal Mexicano con una amplia variedad de programas de entretenimiento, noticias, deportes y telenovelas.</p>
+                <a href="las estrellas.html" target="_blank" class="btn">Ver Canal</a>
+            </div>
+        </div>
+        <div class="channel-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Elonce_TV_Salta.png/1873px-Elonce_TV_Salta.png" alt="Canal El Once TV">
+            <div class="channel-details">
+                <h3>Canal El Once TV</h3>
+                <p>Canal Argentino con una amplia variedad de programas de entretenimiento, noticias, deportes y telenovelas.</p>
+                <a href="telefe SA.html" target="_blank" class="btn">Ver Canal</a>
+            </div>
+        </div>
+        <div class="channel-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/C5NLOGO2017.png" alt="Canal C5N">
+            <div class="channel-details">
+                <h3>Canal C5N</h3>
+                <p>Canal Argentino de noticias, entretenimiento y mucho más.</p>
+                <a href="C5N.html" target="_blank" class="btn">Ver Canal</a>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <h1 style="color: red;">!!MAS CANALES PROXIMAMENTE!!</h1>
+    <script>
+        // Función para mostrar el nombre de usuario
+        function displayUsername() {
+            const username = localStorage.getItem('username');
+            const userArea = document.getElementById('userArea');
+            if (username) {
+                userArea.textContent = `Bienvenido, ${username}`;
+            } else {
+                userArea.textContent = 'No has iniciado sesión.';
+            }
+        }
+        // Llamar a la función para mostrar el nombre de usuario al cargar la página
+        displayUsername();
+    </script>
+</body>
+</html>
